@@ -1,0 +1,12 @@
+galaxy_info:
+  author: Shoma Nishitateno
+  description: Installs and configures Node.js
+  company: Ignission
+  license: MIT
+  min_ansible_version: 2.4
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+  galaxy_tags: []
+dependencies: []

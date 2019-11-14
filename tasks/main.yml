@@ -1,0 +1,27 @@
+---
+
+- name: Check n is already installed.
+  shell: which n
+  register: n_is_installed
+  changed_when: false
+
+- name: Install Node.js
+  apt:
+    name: [ nodejs, npm ]
+  when: n_is_installed.rc == 1
+
+- name: Install version manager for node
+  npm:
+    name: n
+    global: yes
+  when: n_is_installed.rc == 1
+
+- name: Install stable node.
+  shell: n stable
+ 
+- name: Purge Node.js
+  apt:
+    name: nodejs
+    state: absent
+    purge: yes
+  when: n_is_installed.rc == 1
